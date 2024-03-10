@@ -3,8 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import HomeView from '../views/HomeView.vue'
-import UsersCenterView from '../views/UsersCenterView.vue'
-import GoodsCenterView from '../views/GoodsCenterView.vue'
+import UsersManageView from '../views/UsersManageView.vue'
+import PersonalCenterView from '../views/PersonalCenterView.vue'
+import GoodsManageView from '../views/GoodsManageView.vue'
+import OrdersManageView from '../views/OrdersManageView.vue'
 import NotFound from '../views/NotFoundView.vue'
 
 const routes = [
@@ -33,21 +35,39 @@ const routes = [
     }
   },
   {
-    path: '/user/usercenter',
-    name: 'user_center',
-    component: UsersCenterView,
+    path: '/user/personalcenter',
+    name: 'personal_center',
+    component: PersonalCenterView,
     meta: { //该页面是否需要授权
       requestAuth: false,
     }
   },
+
   {
-    path: '/goods/register',
-    name: 'goods_center',
-    component: GoodsCenterView,
+    path: '/user/useranage',
+    name: 'user_manage',
+    component: UsersManageView,
+    meta: { //该页面是否需要授权
+      requestAuth: false,
+    }
+  }
+  ,
+  {
+    path: '/goods/manege',
+    name: 'goods_manage',
+    component: GoodsManageView,
+    meta: { //该页面是否需要授权
+      requestAuth: false,
+    }
+  }, {
+    path: '/orders/manege',
+    name: 'orders_manage',
+    component: OrdersManageView,
     meta: { //该页面是否需要授权
       requestAuth: false,
     }
   },
+  
 
   {
     path: "/404/",

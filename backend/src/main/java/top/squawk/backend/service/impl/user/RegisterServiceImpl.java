@@ -56,6 +56,7 @@ public class RegisterServiceImpl implements RegisterService {
 
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("username", username);
+
         List<User> users = userMapper.selectList(queryWrapper);
         if (!users.isEmpty()) {
             map.put("error_message", "用户名已存在");
@@ -66,7 +67,7 @@ public class RegisterServiceImpl implements RegisterService {
         String encodedPassword = passwordEncoder.encode(password);
 //        String photo = "http://q.qlogo.cn/headimg_dl?dst_uin=1103356347&spec=640&img_type=jpg";
 
-        User user = new User(null, username, encodedPassword, null, null, null, null, null, new Date(), 0, null, 0);
+        User user = new User(null, username, encodedPassword);
         userMapper.insert(user);
 
         map.put("error_message", "success");

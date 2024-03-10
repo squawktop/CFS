@@ -46,6 +46,12 @@ export default {
                         localStorage.setItem("jwt_token", resp.token);
                         context.commit("updateToken", resp.token);
                         data.success(resp);
+
+
+
+                        console.log(resp)
+
+
                     } else {
                         data.error(resp);
                     }
