@@ -12,7 +12,7 @@
     "bootstrap": "^5.3.3",
     "core-js": "^3.8.3",
     "element-china-area-data": "^6.1.0",
-    "element-plus": "^2.6.0",
+    "element-plus": "^2.6.1",
     "jquery": "^3.7.1",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
