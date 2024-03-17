@@ -50,7 +50,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
-                                <router-link class="dropdown-item" :to="{ name: 'user_manage' }">用户中心</router-link>
+                                <router-link class="dropdown-item" :to="{ name: 'personal_center' }">个人中心</router-link>
                             </li>
                             <li>
                                 <hr class="dropdown-divider" />

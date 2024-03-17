@@ -1,3 +1,4 @@
+import router from '@/router';
 import $ from 'jquery'
 export default {
     state: {
@@ -25,6 +26,7 @@ export default {
             state.photo = "";
             state.token = "";
             state.is_login = false;
+            router.push({ name: "home" });
         },
         updatePullingInfo(state, pulling_info) {
             state.pulling_info = pulling_info;

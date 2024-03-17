@@ -37,26 +37,25 @@ public class UpdateServiceImpl implements UpdateService {
         String phone = data.get("phone");
         String zipcode = data.get("zipcode");
 
-        UserInfo u = new UserInfo(user.getId(), name, sex, fullAddress, email, zipcode, phone, 0, 0);
+        UserInfo u = new UserInfo(userId, name, sex, fullAddress, email, zipcode, phone, 0, 0);
 
 
-        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>() ;
-        queryWrapper.eq("user_id" ,userId );
+        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id", userId);
 
 
         List<UserInfo> userInfoList = userInfoMapper.selectList(queryWrapper);
 
         Map<String, String> resp = new HashMap<>();
 
-        if( !userInfoList.isEmpty()){
-            userInfoMapper.update(u,queryWrapper) ;
-            resp.put("error_message" , "success") ;
-            return resp;
-        }else{
-            userInfoMapper.insert(u) ;
+        if (userInfoList.isEmpty()) {
+            userInfoMapper.insert(u);
+            resp.put("error_message", "success");
+        } else {
+            userInfoMapper.update(u, queryWrapper);
+            resp.put("error_message", "success");
         }
 
-        resp.put("error_message" , "error") ;
         return resp;
 
 

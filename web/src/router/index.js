@@ -44,7 +44,7 @@ const routes = [
   },
 
   {
-    path: '/user/useranage',
+    path: '/user/usermanage',
     name: 'user_manage',
     component: UsersManageView,
     meta: { //该页面是否需要授权
