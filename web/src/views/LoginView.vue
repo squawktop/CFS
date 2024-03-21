@@ -1,5 +1,5 @@
 <template>
-    <ContentField>
+    <ContentField v-if="!$store.state.user.pulling_info">
         <div class="row justify-content-md-center">
             <div class="col-3">
                 <form @submit.prevent="login">
@@ -44,6 +44,7 @@ export default {
             store.dispatch("getinfo", {
                 success() {
                     router.push({ name: "home" });
+                    store.commit("updatePullingInfo", false);
                 }, error() {
                     store.commit("updatePullingInfo", false);
                 }

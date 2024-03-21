@@ -8,6 +8,7 @@ import PersonalCenterView from '../views/PersonalCenterView.vue'
 import GoodsManageView from '../views/GoodsManageView.vue'
 import OrdersManageView from '../views/OrdersManageView.vue'
 import NotFound from '../views/NotFoundView.vue'
+import store from '@/store/index'
 
 const routes = [
   {
@@ -15,8 +16,8 @@ const routes = [
     name: 'home',
     component: HomeView,
     // redirect: "/user/register",
-    meta: { //该页面是否需要授权
-      requestAuth: false,
+    meta: { //该页面是否需要授权      //随便写， 也可以设置为   flag : true;
+      requestAuth: true,
     }
   },
 
@@ -24,6 +25,9 @@ const routes = [
     path: '/user/login',
     name: 'user_login',
     component: LoginView,
+    meta: { 
+      requestAuth: false,
+    }
   },
 
   {
@@ -39,7 +43,7 @@ const routes = [
     name: 'personal_center',
     component: PersonalCenterView,
     meta: { //该页面是否需要授权
-      requestAuth: false,
+      requestAuth: true,
     }
   },
 
@@ -48,7 +52,7 @@ const routes = [
     name: 'user_manage',
     component: UsersManageView,
     meta: { //该页面是否需要授权
-      requestAuth: false,
+      requestAuth: true,
     }
   }
   ,
@@ -57,14 +61,14 @@ const routes = [
     name: 'goods_manage',
     component: GoodsManageView,
     meta: { //该页面是否需要授权
-      requestAuth: false,
+      requestAuth: true,
     }
   }, {
     path: '/orders/manege',
     name: 'orders_manage',
     component: OrdersManageView,
     meta: { //该页面是否需要授权
-      requestAuth: false,
+      requestAuth: true,
     }
   },
   
@@ -83,6 +87,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requestAuth && !store.state.user.is_login) {
+    next({ name: "user_login" });
+  } else {
+    next();
+  }
 })
 
 export default router

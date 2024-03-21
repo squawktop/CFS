@@ -1,6 +1,6 @@
 <template>
     <NavBar />
-    <ContentField>
+    <ContentField v-if="userlist.isLoaded">
 
         <!-- delete Modal -->
         <div class="modal fade" id="delete-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <table class="table table-hover align-middle" v-if="userlist.isLoaded">
+        <table class="table table-hover align-middle">
             <thead>
                 <tr>
                     <th scope="col">id</th>
@@ -132,6 +132,7 @@ export default {
                 success(resp) {
                     userlist.value = resp.result;
                     userlist.value.isLoaded = true;
+                    console.log(resp.result)
                 }, error() {
                     console.log("失败")
                 }

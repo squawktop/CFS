@@ -7,6 +7,7 @@ export default {
         photo: "",
         token: "",
         is_login: false,
+        pulling_info: true, 
     },
     getters: {
     },
@@ -26,7 +27,7 @@ export default {
             state.photo = "";
             state.token = "";
             state.is_login = false;
-            router.push({ name: "home" });
+            router.push({ name: "user_login" });
         },
         updatePullingInfo(state, pulling_info) {
             state.pulling_info = pulling_info;

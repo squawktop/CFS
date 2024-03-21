@@ -1,7 +1,7 @@
 <template>
     <NavBar></NavBar>
-    <ContentField>
-        <table class="table table-striped table-hover align-middle" v-if="products.isLoaded">
+    <ContentField v-if="products.isLoaded">
+        <table class="table table-striped table-hover align-middle">
             <thead>
                 <tr>
                     <th scope=" col">id</th>
@@ -94,9 +94,9 @@ export default {
                     store.state.user.token,
             },
             success(resp) {
-                console.log(resp.result)
+                // console.log(resp.result)
                 products.value = resp.result;
-                products.value.isLoaded = true; console.log(products.value.isLoaded)
+                products.value.isLoaded = true; 
             }, error() {
                 console.log("失败")
             }
