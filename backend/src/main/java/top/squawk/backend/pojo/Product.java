@@ -22,8 +22,8 @@ public class Product {
     private String season;
     private String style;
     private String cloth;
-    private int amount;
-    private float price;
+    private Integer amount;
+    private Float price;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date uptime;
